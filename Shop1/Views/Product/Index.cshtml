@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Product>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+
+<h1>Product</h1>
+
+<div class="card shadow mb-4">
+
+    @if (User.IsInRole("2"))
+    {
+        if (Model != null)
+        {
+
+        }
+
+    }
+    <div class="card-header py-3">
+        <a href="/product/add" class="btn btn-primary">Add Product</a>
+    </div>
+    <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+        <thead>
+            <tr role="row">
+                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 267px;">Name</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 267px;">Description</th>
+                <th>Price</th>
+                <th>Image</th>
+
+                @if (User.IsInRole("2"))
+                {
+                    <th class="actions">Delete</th>
+                    <th class="actions">Edit</th>
+                }
+
+        </thead>
+
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                            @item.Image
+                        </td>
+                        <td>
+                            <a href="/product/edit/@item.Id">Edit</a>
+                        </td>
+                        <td>
+                            <a class="deleteProduct" href="#" data-id="@item.Id">Delete</a>
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-body">
+            <img class="modal-image" src="" alt="Alternate Text" id="slika" />
+        </div>
+
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(".deleteProduct").click((e) => {
+        var id = e.currentTarget.attributes[2].value;
+        console.log(id);
+        var check = confirm("Are you sure ?");
+        if (check) {
+            $.ajax({
+                url: "/product/delete/"+id,
+                method: "delete",
+                data: { id:id },
+                success: (result) => {
+                    alert("Product deleted.");
+                    location.reload();
+                },
+                error: (err) => {
+                    alert(err.statusText);
+                }
+            }
+            );
+        }
+    });
+
+</script>

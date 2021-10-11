@@ -1,0 +1,49 @@
+﻿@model Shop1.Models.ViewModel.Home.HomeIndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container">
+    <div class="row justify-content-start">
+
+        @foreach (var item in Model.Products)
+        {
+            @*<form method="post" action="/cart">*@
+            <div class="col-4">
+                <input asp-for="@item.Id" hidden />
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@item.Image" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">@item.Description</p>
+                        <h4>Price: @item.Price</h4>
+                        <button class="btn btn-primary add" data-id="@item.Id">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+            @*</form>*@
+        }
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(".add").click((e) => {
+        var id = e.target.attributes[1].value;
+        console.log(id);
+        $.ajax({
+            url: "/cart",
+            method: "POST",
+            data: { productId: id },
+            success: (result) => {
+                alert("Product added.");
+                location.reload();
+            },
+            error: (err) => {
+                alert(err.statusText);
+            }
+        }
+        );
+    });
+</script>

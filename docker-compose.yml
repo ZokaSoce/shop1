@@ -1,0 +1,19 @@
+﻿version: "3.9"
+services:
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: "Your_password123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+  web:
+    build: .
+    ports:
+      - "8000:80"
+
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=db,1433;Database=webShop1;User Id=sa;Password=Your_password123
+      - ASPNETCORE_ENVIRONMENT:Development

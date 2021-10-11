@@ -1,0 +1,35 @@
+﻿@model List<Cart>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+@if (User.IsInRole("admin"))
+{
+    <a href="/cart/allPurchases">All Purchases</a>
+
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Cart Id </th>
+            <th scope="col">Address</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Id</td>
+                <td>@item.DeliveryAddress</td>
+                <td>@item.CartProduct.Sum(x => x.Product.Price)</td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>

@@ -1,0 +1,33 @@
+﻿@model EditProductViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Update Product</h1>
+
+<form action="/product/edit" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All"></div>
+    <input type="hidden" asp-for="@Model.Id" />
+    <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input asp-for="@Model.Name" class="form-control" placeholder="Enter name">
+        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Price</label>
+        <input asp-for="@Model.Price" class="form-control" placeholder="Enter price">
+        <span asp-validation-for="@Model.Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Description</label>
+        <input asp-for="@Model.Description" class="form-control" placeholder="Enter price">
+        <span asp-validation-for="@Model.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">File</label>
+        <input asp-for="@Model.FileResource" class="form-control" value="@Model.Image">
+        <span asp-validation-for="@Model.FileResource" class="text-danger"></span>
+    </div>
+    <input asp-for="@Model.Image" hidden class="hide"/> 
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

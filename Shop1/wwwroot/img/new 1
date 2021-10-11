@@ -1,0 +1,42 @@
+{
+  "id": "1e12fbea-70e1-40aa-99b6-0054de9616bb",
+  "ticketNumber": "111218-00050",
+  "potentialPayout": 21.69,
+  "payout": null,
+  "startDate": "0001-01-01T00:00:00",
+  "payoutTax": null,
+  "taxedPayout": null,
+  "potentialWin": 21.69,
+  "potentialWinTax": null,
+  "stake": 12.05,
+  "stakeTax": null,
+  "taxedStake": null,
+  "coefficient": 1.80,
+  "system": null,
+  "systemType": null,
+  "createDate": "2018-12-11T23:11:38.6716",
+  "taxId": null,
+  "pairs": [
+    {
+      "formatedMarket": "live:2/0/*/2",
+      "marketType": "2",
+      "marketSubtype": "0",
+      "marketSpecialBetValue": "NULL",
+      "oddFieldId": 1251185642,
+      "oddFieldTypeId": 3,
+      "oddFieldValue": 1.80,
+      "oddFieldValueAmerican": "-125",
+      "oddFieldValueFraction": "4/5",
+      "oddFieldType": "2",
+      "oddAlias": "2",
+      "oddDescription": "Pobjeda gosta",
+      "matchId": 15936528,
+      "homeTeam": "Vasco Da Gama",
+      "awayTeam": "Pinheiros Sao Paulo",
+      "sportName": "Košarka",
+      "marketName": "Pobjednik",
+      "tournament": "Brazil - NBB",
+      "isFixed": false
+    }
+  ]
+}
