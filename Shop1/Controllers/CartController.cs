@@ -93,7 +93,7 @@ namespace Shop1.Controllers
 
             var userId = int.Parse(userClaims.FindFirst(x => x.Type == ClaimTypes.NameIdentifier).Value);
             var check = _cartService.CheckOut(userId, deliveryAddress);
-            return Ok();
+            return View("index");
         }
 
         [HttpGet("purchase")]
