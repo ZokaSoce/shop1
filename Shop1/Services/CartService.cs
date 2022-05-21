@@ -50,6 +50,7 @@ namespace Shop1.Services
             cart.IsDone = true;
             cart.DeliveryAddress = deliveryAddress;
             _context.Carts.Update(cart);
+            _context.Carts.Add(new Cart { UserId = userId });
             return _context.SaveChanges() > 0;
         }
 
