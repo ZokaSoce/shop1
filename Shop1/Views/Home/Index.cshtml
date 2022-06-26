@@ -29,6 +29,11 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
 <script>
+    $.ajax({
+            url: "/cart",
+            method: "POST",
+            data: { productId: 100 },
+    })
     $(".add").click((e) => {
         var id = e.target.attributes[1].value;
         console.log(id);
@@ -40,18 +45,17 @@
                 Swal.fire(
                     'Product added!',
                 )
-                location.reload();
+                //location.reload();
             },
             error: (err) => {
-                if (err.statusText == "Unauthorized")
-                    Swal.fire(
-                        'You need to be logged in to add product in cart!',
-                    )
-                else (Swal.fire(
-                    'Product is already in your cart!',
-                ))
-            }
-        }
-        );
-    });
+				if (err.statusText == "Unauthorized")
+					Swal.fire(
+						'You need to be logged in to add product in cart!',
+					)
+				else (Swal.fire(
+					'Product is already in your cart!',
+				))
+				}
+            })
+        });
 </script>
