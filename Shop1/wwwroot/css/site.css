@@ -1,6 +1,8 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-
+.swal2-styled.swal2-confirm{
+	background-color: #1b6ec2 !important;
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -70,4 +72,10 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+.card-img-top{
+	height: 200px !important;
+}
+.card-title{
+	height: 50px !important;
 }
