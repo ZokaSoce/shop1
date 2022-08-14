@@ -23,7 +23,7 @@ namespace Shop1
                 var service = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 service.Database.Migrate();
 
-                service.Database.ExecuteSqlRaw(@"IF NOT EXISTS (select 1 from Users) BEGIN INSERT INTO Users(Email, Password, Role) VALUES('admin@admin.ba', '12345678', 'admin') END IF NOT EXISTS (SELECT 1 FROM Products) BEGIN INSERT INTO Products(Name,Price,Description,Image) VALUES ('kruh',1,'domaci kruh','/1024x768-f2b21802-64bc-11eb-a115-0242ac130010.webp') INSERT INTO Products(Name,Price,Description,Image) VALUES ('pizza',2,'domaca pizza','__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2019__09__easy-pepperoni-pizza-lead-3-8f256746d649404baa36a44d271329bc.jpg	')  END");
+                service.Database.ExecuteSqlRaw(@"IF NOT EXISTS (select 1 from Users) BEGIN INSERT INTO Users(Email, Password, Role) VALUES('admin@admin.ba', '12345678', 'admin') END IF NOT EXISTS (SELECT 1 FROM Products) BEGIN INSERT INTO Products(Name,Price,Description,Image) VALUES ('Shoei RF-SR Helmet - Solid',1,'Full Face Helmet','/1024x768-f2b21802-64bc-11eb-a115-0242ac130010.webp') INSERT INTO Products(Name,Price,Description,Image) VALUES ('AGV K1 Helmet',2,'Full Face Helmet','agvk1_helmet_750x750.jpg	')  END");
             };
             host.Run();
         }
